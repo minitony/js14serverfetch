@@ -1,7 +1,9 @@
 import WeatherRefreshButton from './components/WeatherRefreshButton';
 
 async function getWeather() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/weather`, {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000';
+
+  const res = await fetch(`${baseUrl}/api/weather`, {
     cache: 'no-store' // Always fresh data, no caching
   });
   if (!res.ok) throw new Error('Failed to fetch weather');
